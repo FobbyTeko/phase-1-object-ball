@@ -147,3 +147,19 @@ function shoeSize (playerName){
 shoeSize(""); 
 
 
+function teamColors (teamName) {
+    let game = gameObject();
+      if(game.home.teamName === teamName) {
+        console.log("Brooklyn Nets Colors:", game.home.colors);
+      } else {
+        console.log("Charlotte Hornets Colors:", game.away.colors)
+      }
+  };
+  
+  teamColors("");
+
+
+  function teamNames() {
+    return [gameObject()["home"]["teamName"], gameObject()["away"]["teamName"]];
+  }
+  console.log(teamNames())
