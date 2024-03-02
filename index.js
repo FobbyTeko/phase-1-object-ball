@@ -1,5 +1,5 @@
 function gameObject() {
-    let info = {
+    let userInfo = {
         home:{
             teamName: "Brooklyn Nets",
             colors: ["Black", "White"],
@@ -114,6 +114,17 @@ function gameObject() {
             },
         },
     };
-    return info;
+    return userInfo;
 }
+
+function numPointsScored(playerName) {
+    let game = gameObject();
+      if (game.home.players[playerName]){
+        console.log(game.home.players[playerName].points);
+      } else {
+        console.log(game.away.players[playerName].points);
+      }
+    };
+
+numPointsScored(""); //<-- function call for each players name for how many points scored.
 
