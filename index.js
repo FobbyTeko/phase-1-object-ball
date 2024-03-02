@@ -119,6 +119,9 @@ function gameObject() {
 
 function numPointsScored(playerName) {
     let game = gameObject();
+    const label = "Points Scored:"
+    console.log(playerName)
+    console.log(label)
       if (game.home.players[playerName]){
         console.log(game.home.players[playerName].points);
       } else {
@@ -126,5 +129,21 @@ function numPointsScored(playerName) {
       }
     };
 
-numPointsScored(""); //<-- function call for each players name for how many points scored.
+numPointsScored(""); 
+
+
+function shoeSize (playerName){
+    let game = gameObject();
+    const shoeLabel = "Shoe Size:"
+    console.log(playerName);
+    console.log(`${shoeLabel}`);
+    if(game.home.players[playerName]){
+        console.log(game.home.players[playerName].shoe);
+    } else {
+        console.log(game.away.players[playerName].shoe);
+    }
+};
+
+shoeSize(""); 
+
 
