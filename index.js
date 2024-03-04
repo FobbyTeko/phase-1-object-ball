@@ -155,18 +155,20 @@ function teamColors (teamName) {
       };
 
   teamColors("");
+  
 
-  function playerNumbers(teamName) {
-    if(teamName === gameObject().home.teamName) {
+function playerNumbers(teamName) {
+    let game = gameObject()
+    if(teamName === game.home.teamName) {
         let nums = []
-        for(let gameKey in gameObject().home.players) {
-            nums.push(gameObject().home.players[gameKey]["number"])
+        for(let gameKey in game.home.players) {
+            nums.push(game.home.players[gameKey]["number"])
         }
         return nums
-    }if(teamName === gameObject().away.teamName) {
+    }if(teamName === game.away.teamName) {
         let nums = []
-        for(let gameKey in gameObject().away.players) {
-            nums.push(gameObject().away.players[gameKey]["number"])
+        for(let gameKey in game.away.players) {
+            nums.push(game.away.players[gameKey]["number"])
     }
         return nums
     }else {
@@ -176,4 +178,22 @@ function teamColors (teamName) {
   console.log(playerNumbers(''));
 
   
+function playerStats(playerName) {
+    let game = gameObject();
+    const label = "Player Stats:"
+    console.log(playerName)
+    console.log(label)  
+    
+    for (let stats in game.home.players) {
+      if (stats === playerName){
+        return game.home.players[playerName];
+      }  
+    }
+    for (let stats in game.away.players) {
+      if (stats === playerName){
+        return game.away.players[playerName];
+      }  
+    }
+  };
   
+  console.log(playerStats(""));
