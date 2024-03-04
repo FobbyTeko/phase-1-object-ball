@@ -131,7 +131,6 @@ function numPointsScored(playerName) {
 
 numPointsScored(""); 
 
-
 function shoeSize (playerName){
     let game = gameObject();
     const shoeLabel = "Shoe Size:"
@@ -146,20 +145,35 @@ function shoeSize (playerName){
 
 shoeSize(""); 
 
-
 function teamColors (teamName) {
     let game = gameObject();
       if(game.home.teamName === teamName) {
         console.log("Brooklyn Nets Colors:", game.home.colors);
-      } else {
-        console.log("Charlotte Hornets Colors:", game.away.colors)
+      } else if (game.away.teamName === teamName){
+        console.log("Charlotte Hornets Colors:", game.away.colors);
       }
-  };
-  
+      };
+
   teamColors("");
 
-
-  function teamNames() {
-    return [gameObject()["home"]["teamName"], gameObject()["away"]["teamName"]];
+  function playerNumbers(teamName) {
+    if(teamName === gameObject().home.teamName) {
+        let nums = []
+        for(let gameKey in gameObject().home.players) {
+            nums.push(gameObject().home.players[gameKey]["number"])
+        }
+        return nums
+    }if(teamName === gameObject().away.teamName) {
+        let nums = []
+        for(let gameKey in gameObject().away.players) {
+            nums.push(gameObject().away.players[gameKey]["number"])
+    }
+        return nums
+    }else {
+        return "Team not found! Please enter a valid team name."
+    }
   }
-  console.log(teamNames())
+  console.log(playerNumbers(''));
+
+  
+  
