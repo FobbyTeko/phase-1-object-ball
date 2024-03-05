@@ -197,3 +197,28 @@ function playerStats(playerName) {
   };
   
   console.log(playerStats(""));
+
+  function bigShoeRebounds() {
+    let game = gameObject();
+    let bigShoe = 0;
+    let player = "";
+    let rebounds = 0;
+  
+    for (let stats in game.home.players) {
+      if (bigShoe < game.home.players[stats].shoe) {
+        bigShoe = game.home.players[stats].shoe;
+        player = stats
+        rebounds = game.home.players[stats].rebounds;
+      }  
+    } 
+    for (let stats in game.away.players) {
+      if (bigShoe < game.away.players[stats].shoe) {
+        bigShoe = game.away.players[stats].shoe;
+        player = stats
+        rebounds = game.away.players[stats].rebounds;
+      }
+      console.log(typeof(player));
+      return bigShoe + " " + player + " " + rebounds;
+  };
+  
+  console.log(bigShoeRebounds());
