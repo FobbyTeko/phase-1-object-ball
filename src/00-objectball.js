@@ -131,6 +131,8 @@ function numPointsScored(playerName) {
 
 //numPointsScored(""); 
 
+
+
 function shoeSize (playerName){
     let game = gameObject();
     const shoeLabel = "Shoe Size:"
@@ -145,6 +147,8 @@ function shoeSize (playerName){
 
 //shoeSize(""); 
 
+
+
 function teamColors (teamName) {
     let game = gameObject();
       if(game.home.teamName === teamName) {
@@ -156,6 +160,8 @@ function teamColors (teamName) {
 
 //teamColors("");
   
+
+
 
 function playerNumbers(teamName) {
     let game = gameObject()
@@ -178,6 +184,7 @@ function playerNumbers(teamName) {
   
 //console.log(playerNumbers(''));
 
+
   
 function playerStats(playerName) {
     let game = gameObject();
@@ -199,7 +206,9 @@ function playerStats(playerName) {
   
 //console.log(playerStats(""));
 
-  function bigShoeRebounds() {
+
+
+function bigShoeRebounds() {
     let game = gameObject();
     let bigShoe = 0;
     let player = "";
@@ -224,3 +233,111 @@ function playerStats(playerName) {
   
 //console.log(bigShoeRebounds());
 
+
+
+function mostPointsScored() {
+  let gameHome = gameObject()["home"]["players"];
+  let gameAway = gameObject()["away"]["players"];
+  let pointsScored = 0;
+  let player = "";
+
+  for (let character in gameHome) {
+    if (pointsScored < gameHome[character].points) {
+        pointsScored = gameHome[character].points;
+        player = character
+    }
+  }
+  for (let character in gameAway) {
+    if (pointsScored < gameAway[character].points) {
+        pointsScored = gameAway[character].points;
+        player = character
+    }
+  }
+  console.log("Most Points Scored:")
+  return `Name: ${player}, Points Scored: ${pointsScored}`;
+}
+
+//console.log(mostPointsScored())
+
+
+
+function winningTeam() {
+  let homeTeam = gameObject()["home"]["teamName"];
+  let awayTeam = gameObject()["away"]["teamName"];
+  let gameHome = gameObject()["home"]["players"];
+  let gameAway = gameObject()["away"]["players"];
+  let totalPointsHome = 0;
+  let totalPointsAway = 0;
+
+  for(let character in gameHome){
+    totalPointsHome = gameHome[character].points;
+  }
+  for(let character in gameAway) {
+    totalPointsAway = gameAway[character].points;
+  }
+
+  if (totalPointsHome > totalPointsAway) {
+    return (`THE WINNER IS --> THE ${homeTeam}!!`)
+  } else if (totalPointsAway > totalPointsHome) {
+    return (`THE WINNER IS --> THE ${awayTeam}!!`)
+  } else {
+    return "It's a Draw!!"
+  }
+}
+
+//console.log(winningTeam());
+
+
+
+function playerWithLongestName () {
+  let gameHome = gameObject()["home"]["players"];
+  let gameAway = gameObject()["away"]["players"];
+  let playerName = ""
+
+  for (let character in gameHome) {
+    if (playerName.length < character.length) {
+      playerName = character
+    }
+  }
+  for (let character in gameAway) {
+    if (playerName.length < character.length) {
+      playerName = character
+    }
+  }
+  return `The longest name award goes to: ${playerName}!`;
+}
+
+//console.log(playerWithLongestName());
+
+function doesLongNameStealATon() {
+  let gameHome = gameObject()["home"]["players"];
+  let gameAway = gameObject()["away"]["players"];
+  let playerName = ""
+  let steals = 0
+
+  for (let character in gameHome) {
+    if (playerName.length < character.length) {
+      playerName = character
+      steals = gameHome[character].steals
+    }
+  }
+  for (let character in gameAway) {
+    if (playerName.length < character.length) {
+      playerName = character
+      steals = gameAway[character].steals
+    }
+  }
+  for (let character in gameHome) {
+    if (steals < gameHome[character].steals) {
+      return false
+    }
+  }
+  for (let character in gameAway) {
+    if (steals < gameAway[character].steals) {
+      return false
+    }
+  }
+  return "Winner Winner Chicken Dinner!!"
+}
+
+console.log(doesLongNameStealATon());
